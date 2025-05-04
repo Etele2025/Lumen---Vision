@@ -14,42 +14,75 @@
     header, footer {
       background-color: #fff5dd;
       text-align: center;
-      padding: 1.5rem;
+      padding: 1.2rem;
+    }
+    header img {
+      width: 60px;
+      height: auto;
+      vertical-align: middle;
+    }
+    header h1 {
+      display: inline-block;
+      font-size: 1.8rem;
+      margin-left: 0.5rem;
+      vertical-align: middle;
     }
     nav {
-      margin-top: 1rem;
+      margin-top: 0.8rem;
     }
     nav a {
-      margin: 0 1rem;
+      margin: 0 0.7rem;
       text-decoration: none;
       color: #444;
       font-weight: bold;
+      font-size: 1rem;
     }
     section {
       max-width: 800px;
-      margin: 2rem auto;
+      margin: 1.5rem auto;
       padding: 0 1rem;
     }
     .download a {
       display: inline-block;
-      margin: 1rem 0.5rem;
-      padding: 0.8rem 1.2rem;
+      margin: 0.5rem;
+      padding: 0.7rem 1.2rem;
       background-color: #ddbe86;
       color: white;
       border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
     }
+    .contact {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .contact a {
+      color: #444;
+      text-decoration: underline;
+    }
+    footer p {
+      margin: 0.3rem 0;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.4rem;
+      }
+      nav a {
+        font-size: 0.95rem;
+        margin: 0 0.5rem;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
+    <img src="lumen_logo.png" alt="Lumen logo">
     <h1>Lumen – Inner Light</h1>
-    <p><em>“Light doesn't come from outside – it awakens from within.”</em></p>
     <nav>
       <a href="index-en.html">Home</a>
       <a href="#mission">Mission</a>
       <a href="#downloads">Downloads</a>
+      <a href="#contact">Contact</a>
       <a href="index.html">🇭🇺 Magyar</a>
     </nav>
   </header>
@@ -70,8 +103,14 @@
     <a href="Lumen_Vision_Pack.docx" download>Vision Pack (HU)</a>
   </section>
 
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p>If you have a question, thought, or kind intention to share, feel free to write:</p>
+    <p><a href="mailto:lumen.ut@protonmail.com">lumen.ut@protonmail.com</a></p>
+  </section>
+
   <footer>
-    This site is dedicated to inner light. No author, no ads – just presence.
+    <p>This site is dedicated to inner light. No author, no ads – just presence.</p>
   </footer>
 </body>
 </html>
