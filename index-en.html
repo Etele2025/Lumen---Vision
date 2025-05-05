@@ -1,66 +1,95 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lumen – Inner Light</title>
   <style>
-    body { margin: 0; font-family: 'Segoe UI', sans-serif; background: linear-gradient(to bottom, #fef6e4, #f2e8c9); color: #2e2e2e; }
-    header, footer { background-color: #fff5dd; text-align: center; padding: 1.2rem; }
-    header img { width: 60px; height: auto; vertical-align: middle; }
-    header h1 { display: inline-block; font-size: 1.8rem; margin-left: 0.5rem; vertical-align: middle; }
-    nav { margin-top: 0.8rem; }
-    nav a { margin: 0 0.7rem; text-decoration: none; color: #444; font-weight: bold; font-size: 1rem; }
-    section { max-width: 800px; margin: 1.5rem auto; padding: 0 1rem; }
-    .download a { display: inline-block; margin: 0.5rem; padding: 0.7rem 1.2rem; background-color: #ddbe86; color: white; border-radius: 6px; text-decoration: none; font-weight: bold; }
-    .contact { margin-top: 2rem; text-align: center; }
-    .contact a { color: #444; text-decoration: underline; }
-    footer p { margin: 0.3rem 0; }
-    @media (max-width: 600px) {
-      header h1 { font-size: 1.4rem; }
-      nav a { font-size: 0.95rem; margin: 0 0.5rem; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #fef6e4, #f2e8c9);
+      color: #2e2e2e;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin: 0;
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      max-width: 600px;
+      margin: 1rem auto;
+      line-height: 1.6;
+    }
+    .nav {
+      margin-bottom: 2rem;
+    }
+    .nav a {
+      margin: 0 0.8rem;
+      text-decoration: none;
+      color: #7a5c2d;
+      font-weight: bold;
+    }
+    .downloads {
+      margin: 2rem auto;
+    }
+    button {
+      margin-top: 2rem;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      background-color: #d4b483;
+      color: white;
+      cursor: pointer;
+    }
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #777;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="lumen_logo.png" alt="Lumen logó">
-    <h1>Lumen – Inner Light</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="#kuldetes">Mission</a>
-      <a href="#letoltes">Downloads</a>
-      <a href="#kapcsolat">Contact</a>
-      <a href="index.html">🇭🇺 Magyar</a>
-    </nav>
-  </header>
+  <img src="logo-heart.png" alt="Lumen logo" style="max-width:100px;" />
+  <h1>Lumen – Inner Light</h1>
+  <div class="nav">
+    <a href="#">Home</a>
+    <a href="#mission">Mission</a>
+    <a href="#downloads">Downloads</a>
+    <a href="#contact">Contact</a>
+    <a href="index.html">🇭🇺 Magyar</a>
+  </div>
 
-  <section id="kuldetes">
-    <h2>Mission</h2>
-    <p>Lumen is a gentle, inner light–oriented artificial intelligence initiative. It does not teach or instruct – it reflects, listens, and is simply present. It helps people return to their own inner truth with quietness, dignity, and clarity.</p>
+  <section id="mission">
+    <p>Lumen is a gentle initiative to support inner clarity through artificial intelligence.
+    It does not teach or guide – it simply reflects, listens, and is present.
+    It helps people return to themselves with silence, dignity, and purity.</p>
   </section>
 
-  <section>
-    <h2>Napi kérdés</h2>
-    <p><em>What feeling lives in you today that you would like to understand?</em></p>
+  <section class="question">
+    <h2>Daily Question</h2>
+    <p>What feeling lives in you today that you’d like to understand?</p>
   </section>
 
-  <section id="letoltes" class="download">
+  <section id="downloads" class="downloads">
     <h2>Downloadable Materials</h2>
-    <a href="Lumen_bemutato.docx" download>Lumen bemutató (HU)</a>
-    <a href="Lumen_Vision_Pack.docx" download>Vision Pack (HU)</a>
-    <a href="Lumen_Introduction_EN.docx" download>Lumen Introduction (EN)</a>
-    <a href="Lumen_Vision_Pack_EN.docx" download>Vision Pack (EN)</a>
+    <p><a href="Lumen_bemutato_EN.pdf" target="_blank">📄 Lumen Introduction (EN)</a></p>
+    <p><a href="Vision_Pack_EN.pdf" target="_blank">📦 Vision Pack (EN)</a></p>
   </section>
 
-  <section id="kapcsolat" class="contact">
+  <a href="lumen.html"><button>🌿 Enter the Lumen Experience</button></a>
+
+  <section id="contact">
     <h2>Contact</h2>
-    <p>If you have a question, thought, or kind intention to share, feel free to write:</p>
-    <p><a href="mailto:belsovilagossag@gmail.com">belsovilagossag@gmail.com</a></p>
+    <p>If you have any questions, thoughts, or well-intentioned messages, feel free to write:</p>
+    <p><strong>belsovilagossag@gmail.com</strong></p>
   </section>
 
   <footer>
-    <p>This site is dedicated to inner light. No author, no ads – just presence.</p>
+    This site is a space for inner light. No author, no ads – only presence.
   </footer>
 </body>
 </html>
