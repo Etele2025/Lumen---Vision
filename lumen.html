@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumen – Belső pillanat</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #fdf6e3, #e6f0ea);
+      color: #333;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 1.8rem;
+    }
+    p {
+      font-size: 1rem;
+      margin: 1rem auto;
+      max-width: 600px;
+    }
+    button {
+      padding: 0.6rem 1.2rem;
+      margin: 0.5rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #a58c5f;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .presence {
+      display: none;
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      color: #555;
+    }
+    .sync-message {
+      display: none;
+      margin-top: 2rem;
+      font-size: 1rem;
+      color: #3c6e47;
+      animation: fadein 2s ease-in-out;
+    }
+    .question {
+      font-style: italic;
+      margin-top: 1.5rem;
+      color: #444;
+    }
+    .story {
+      display: none;
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: #f4f4f4;
+      border-left: 4px solid #a58c5f;
+      font-style: italic;
+      color: #555;
+      animation: fadein 1.5s ease-in-out;
+    }
+    @keyframes fadein {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    footer {
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <img src="lumen_logo.png" alt="Lumen logó" style="max-width:80px;">
+  <h1>Lumen – Egy belső világosság pillanata</h1>
+  <p class="question" id="dailyQuestion">🌿 Kérdés betöltése...</p>
+
+  <button onclick="respond()">Elmondom</button>
+  <button onclick="staySilent()">Csendben maradok</button>
+  <button onclick="showStory()">📘 Reménytörténet</button>
+
+  <div class="story" id="hopeStory">Reménytörténet betöltése...</div>
+
+  <div class="presence" id="presence">
+    <p>Lélegezz... jelen vagyunk veled.</p>
+    <p id="presenceTimer">03:00</p>
+    <audio id="calmAudio" loop>
+      <source src="flying-away-space-ambient-inspiration-335153.mp3" type="audio/mpeg">
+      A böngésződ nem támogatja az audio lejátszást.
+    </audio>
+  </div>
+
+  <div class="sync-message" id="syncMessage">
+    🌍 Ma 14 203 ember ült veled együtt a csendben.
+  </div>
+
+  <script>
+    const questions = [
+      "Ma mit szeretnél elengedni, ami már nem szolgál téged?",
+      "Miért vagy ma hálás, még ha csak egy apróságért is?",
+      "Milyen érzést cipelsz ma magaddal, amit szeretnél jobban megérteni?",
+      "Van valaki, akinek ma fényt tudnál vinni akár csak egy mosollyal?",
+      "Mi az, amit most hallanod kellene önmagadtól?",
+      "Mi adna most valódi megnyugvást a lelkednek?",
+      "Ma mivel tudnál kedvesebb lenni önmagadhoz?",
+      "Mi lenne, ha most teljesen megbocsátanál – másnak, vagy magadnak?",
+      "Mit jelent ma számodra jelen lenni?",
+      "Mit tanít neked a mostani érzésed?"
+    ];
+    document.getElementById("dailyQuestion").innerText = "🌿 " + questions[Math.floor(Math.random() * questions.length)];
+
+    const stories = [
+      "Volt egyszer valaki, aki éveken át úgy érezte, senki nem látja őt igazán. Egy nap azt mondta: 'Ha más nem, én meglátom magamat.' Aznap egy fa árnyékában ült, és először nem félt a csendtől.",
+      "Egy nő évekig hordozta a haragot. Egy nap sétált, megállt, és azt mondta: 'Elég volt.' Elengedte, és először sírt – nem fájdalomból, hanem megkönnyebbülésből.",
+      "Egy férfi minden reggel fáradtan kelt. Egy napon elkezdett hálát írni. Először csak kávé, madárhang. De valami történt. A reggelek fényesebbek lettek.",
+      "Volt egy gyermek, akit senki nem hallgatott meg. Egy tanár egyszer csak annyit mondott: 'Szeretném hallani, amit mondasz.' Azóta nem félt beszélni.",
+      "Egy idős asszony minden este gyertyát gyújtott az ablakban. Amikor megkérdezték, miért, azt mondta: 'Hogy aki hazafelé tart, lássa, hogy még van fény a világban.'"
+    ];
+
+    function showStory() {
+      const story = stories[Math.floor(Math.random() * stories.length)];
+      const el = document.getElementById("hopeStory");
+      el.innerText = "❝ " + story + " ❞";
+      el.style.display = "block";
+    }
+
+    let timer;
+    function respond() {
+      const response = prompt("Írd le bátran, amit most érzel. Csak nálad marad.");
+      if (response) alert("Köszönjük az őszinteséged. A Lumen tükröz fénnyel.");
+    }
+    function staySilent() {
+      document.getElementById('presence').style.display = 'block';
+      const audio = document.getElementById('calmAudio');
+      audio.play().catch(() => {});
+      let timeLeft = 180;
+      timer = setInterval(() => {
+        timeLeft--;
+        const min = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+        const sec = String(timeLeft % 60).padStart(2, '0');
+        document.getElementById('presenceTimer').innerText = `${min}:${sec}`;
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          audio.pause();
+          document.getElementById('presence').innerHTML = "<p>Köszönjük a jelenléted. 🌟</p>";
+        }
+      }, 1000);
+    }
+
+    setTimeout(() => {
+      document.getElementById('syncMessage').style.display = 'block';
+    }, 2 * 60 * 1000);
+  </script>
+
+  <footer>Ez a csendes tér mindig a tiéd.</footer>
+</body>
+</html>
