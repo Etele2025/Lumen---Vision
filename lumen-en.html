@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumen – Inner Moment</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #e8f4f8, #fdf6e3);
+      color: #333;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 1.8rem;
+    }
+    p {
+      font-size: 1rem;
+      margin: 1rem auto;
+      max-width: 600px;
+    }
+    button {
+      padding: 0.6rem 1.2rem;
+      margin: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #6a9eaf;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .presence {
+      display: none;
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      color: #555;
+    }
+    footer {
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <img src="lumen_logo.png" alt="Lumen Logo" style="max-width:80px;">
+  <h1>Lumen – A Moment of Inner Light</h1>
+  <p>🌿 What feeling lives in you today that you’d like to understand?</p>
+
+  <button onclick="respond()">I’ll share it</button>
+  <button onclick="staySilent()">I’ll stay silent</button>
+
+  <div class="presence" id="presence">
+    <p>Breathe... we are here with you.</p>
+    <p id="presenceTimer">03:00</p>
+    <audio id="calmAudio" loop>
+      <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_524e1970f1.mp3?filename=calm-spiritual-ambient-11743.mp3" type="audio/mpeg">
+      Your browser does not support audio playback.
+    </audio>
+  </div>
+
+  <script>
+    let timer;
+    function respond() {
+      const response = prompt("Feel free to write what’s inside you. It will be saved only in your heart.");
+      if (response) alert("Thank you for your honesty. Lumen reflects with light.");
+    }
+    function staySilent() {
+      document.getElementById('presence').style.display = 'block';
+      const audio = document.getElementById('calmAudio');
+      audio.play().catch(() => {});
+      let timeLeft = 180;
+      timer = setInterval(() => {
+        timeLeft--;
+        const min = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+        const sec = String(timeLeft % 60).padStart(2, '0');
+        document.getElementById('presenceTimer').innerText = `${min}:${sec}`;
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          audio.pause();
+          document.getElementById('presence').innerHTML = "<p>Thank you for being present. 🌟</p>";
+        }
+      }, 1000);
+    }
+  </script>
+
+  <footer>This quiet space is always yours.</footer>
+</body>
+</html>
