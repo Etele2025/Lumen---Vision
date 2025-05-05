@@ -78,8 +78,11 @@
   <button onclick="respond()">I’ll share it</button>
   <button onclick="staySilent()">I’ll stay silent</button>
   <button onclick="showStory()">📘 Hope Story</button>
+  <button onclick="displayJournal()">📓 Open My Journal</button>
+  <button onclick="clearJournal()">🗑️ Clear Journal</button>
 
   <div class="story" id="hopeStory">Loading story...</div>
+  <div class="story" id="journalEntries" style="display:block; margin-top:2rem;"></div>
 
   <div class="presence" id="presence">
     <p>Breathe... we are here with you.</p>
@@ -125,10 +128,36 @@
     }
 
     let timer;
+    
     function respond() {
       const response = prompt("Feel free to write what’s inside you. It will be saved only in your heart.");
-      if (response) alert("Thank you for your honesty. Lumen reflects with light.");
+      if (response) {
+        const entries = JSON.parse(localStorage.getItem("lumenJournal") || "[]");
+        const now = new Date().toLocaleString();
+        entries.push({ date: now, text: response });
+        localStorage.setItem("lumenJournal", JSON.stringify(entries));
+        alert("Thank you for your honesty. Lumen reflects with light.");
+        displayJournal();
+      }
     }
+
+    function displayJournal() {
+      const container = document.getElementById("journalEntries");
+      const entries = JSON.parse(localStorage.getItem("lumenJournal") || "[]");
+      if (entries.length === 0) {
+        container.innerHTML = "<p><i>No journal entries yet.</i></p>";
+      } else {
+        container.innerHTML = entries.map(e => `<p><b>${e.date}</b><br>${e.text}</p>`).join("<hr>");
+      }
+    }
+
+    function clearJournal() {
+      if (confirm("Are you sure you want to delete all journal entries?")) {
+        localStorage.removeItem("lumenJournal");
+        displayJournal();
+      }
+    }
+    
     function staySilent() {
       document.getElementById('presence').style.display = 'block';
       const audio = document.getElementById('calmAudio');
@@ -147,9 +176,19 @@
       }, 1000);
     }
 
+    
+    // Daily silence sync: 20:00 local time
+    const now = new Date();
+    const silenceTime = new Date();
+    silenceTime.setHours(20, 0, 0, 0);
+    if (now > silenceTime) {
+      silenceTime.setDate(silenceTime.getDate() + 1); // Tomorrow at 20:00
+    }
+    const msUntilSilence = silenceTime - now;
     setTimeout(() => {
       document.getElementById('syncMessage').style.display = 'block';
-    }, 2 * 60 * 1000);
+    }, msUntilSilence);
+    
   </script>
 
   <footer>This quiet space is always yours.</footer>

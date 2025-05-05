@@ -78,6 +78,8 @@
   <button onclick="respond()">Elmondom</button>
   <button onclick="staySilent()">Csendben maradok</button>
   <button onclick="showStory()">📘 Reménytörténet</button>
+  <button onclick="displayJournal()">📓 Megnyitom a naplóm</button>
+  <button onclick="clearJournal()">🗑️ Naplóm törlése</button>
 
   <div class="story" id="hopeStory">Reménytörténet betöltése...</div>
 
@@ -125,10 +127,36 @@
     }
 
     let timer;
+    
     function respond() {
       const response = prompt("Írd le bátran, amit most érzel. Csak nálad marad.");
-      if (response) alert("Köszönjük az őszinteséged. A Lumen tükröz fénnyel.");
+      if (response) {
+        const entries = JSON.parse(localStorage.getItem("lumenJournal") || "[]");
+        const now = new Date().toLocaleString();
+        entries.push({ date: now, text: response });
+        localStorage.setItem("lumenJournal", JSON.stringify(entries));
+        alert("Köszönjük az őszinteséged. A Lumen tükröz fénnyel.");
+        displayJournal();
+      }
     }
+
+    function displayJournal() {
+      const container = document.getElementById("journalEntries");
+      const entries = JSON.parse(localStorage.getItem("lumenJournal") || "[]");
+      if (entries.length === 0) {
+        container.innerHTML = "<p><i>Még nincs bejegyzés.</i></p>";
+      } else {
+        container.innerHTML = entries.map(e => `<p><b>${e.date}</b><br>${e.text}</p>`).join("<hr>");
+      }
+    }
+
+    function clearJournal() {
+      if (confirm("Biztosan törölni szeretnéd az összes bejegyzést?")) {
+        localStorage.removeItem("lumenJournal");
+        displayJournal();
+      }
+    }
+    
     function staySilent() {
       document.getElementById('presence').style.display = 'block';
       const audio = document.getElementById('calmAudio');
@@ -147,9 +175,19 @@
       }, 1000);
     }
 
+    
+    // Napi csendidő: 20:00 helyi idő szerint
+    const now = new Date();
+    const silenceTime = new Date();
+    silenceTime.setHours(20, 0, 0, 0);
+    if (now > silenceTime) {
+      silenceTime.setDate(silenceTime.getDate() + 1); // holnap 20:00
+    }
+    const msUntilSilence = silenceTime - now;
     setTimeout(() => {
       document.getElementById('syncMessage').style.display = 'block';
-    }, 2 * 60 * 1000);
+    }, msUntilSilence);
+    
   </script>
 
   <footer>Ez a csendes tér mindig a tiéd.</footer>
