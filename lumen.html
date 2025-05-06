@@ -5,119 +5,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lumen – Belső szoba</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #fdfbf7, #e8e2d0);
-      color: #2e2e2e;
-      text-align: center;
-      padding: 2rem;
-    }
-    h1 {
-      color: #4b5e3d;
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-    .question, .story, .silence, .presence {
-      background: #ffffffcc;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin: 1.5rem auto;
-      max-width: 600px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-    .presence {
-      display: none;
-    }
-    #presenceTime {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
-    }
-    audio {
-      margin-top: 1rem;
-    }
-    footer {
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: #666;
-    }
-    button {
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      background-color: #4b5e3d;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-  </style>
 </head>
-<body>
+<body style="font-family: 'Segoe UI', sans-serif; text-align:center; padding:2rem; background:#fdfbf7;">
   <h1>Lumen – Belső szoba</h1>
-
-  <div class="question">
-    <h2>Napi kérdés</h2>
-    <p>Ma milyen érzés lakik benned, amit szeretnél megérteni?</p>
-  </div>
-
-  <div class="story">
-    <h2>Reménytörténet</h2>
-    <p>Egy reggel úgy ébredtem, hogy végre nem félek attól, aki vagyok.  
-    Aznap csendben maradtam – és végre meghallottam magam.</p>
-  </div>
-
-  <div class="silence">
-    <h2>Csendidő</h2>
-    <p>Minden nap este 20:00-kor (helyi idő szerint) megjelenik:</p>
-    <div id="presenceBox" class="presence">
-      <strong>Ma 14 203 ember ült veled együtt a csendben.</strong>
-      <div id="presenceTime">03:00</div>
-      <audio id="calmAudio" autoplay loop>
-        <source src="flying-away-space-ambient-inspiration-335153.mp3" type="audio/mpeg">
-        A böngésződ nem támogatja a zenelejátszást.
-      </audio>
-    </div>
-    <button onclick="startSilence()">🌿 Lépj be a csendbe</button>
-  </div>
-
-  <footer>
-    Ez a belső szoba a jelenlét helye. Nem gyűjt adatot. Nem követ. Csak van.
-  </footer>
-
-  <script>
-    function startSilence() {
-      const now = new Date();
-      const presenceBox = document.getElementById("presenceBox");
-      const audio = document.getElementById("calmAudio");
-
-      // Ha 20:00 után vagyunk, akkor jelenjen meg
-      if (now.getHours() === 20) {
-        presenceBox.style.display = "block";
-        startTimer();
-        audio.play();
-      } else {
-        alert("A csendidő minden nap este 20:00-kor kezdődik.");
-      }
-    }
-
-    function startTimer() {
-      let time = 180; // 3 perc
-      const timerDisplay = document.getElementById("presenceTime");
-
-      const countdown = setInterval(() => {
-        const minutes = Math.floor(time / 60);
-        const seconds = time % 60;
-        timerDisplay.textContent = minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
-        time--;
-
-        if (time < 0) {
-          clearInterval(countdown);
-          timerDisplay.textContent = "⏳ A csend letelt. Köszönjük a jelenléted.";
-        }
-      }, 1000);
-    }
-  </script>
+  <p><strong>Napi kérdés:</strong> Ma milyen érzés lakik benned, amit szeretnél megérteni?</p>
+  <p><strong>Reménytörténet:</strong> Egy reggel úgy ébredtem, hogy végre nem félek attól, aki vagyok.</p>
+  <button onclick="document.getElementById('zene').play()">🎵 Zene lejátszása</button><br><br>
+  <audio id="zene" controls loop>
+    <source src="flying-away-space-ambient-inspiration-335153.mp3" type="audio/mpeg">
+    A böngésződ nem támogatja a lejátszást.
+  </audio>
 </body>
 </html>
