@@ -2,50 +2,119 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lumen – Belső világosság</title>
   <style>
-    body { font-family: 'Segoe UI', sans-serif; margin: 2rem; background: #fefdfb; color: #333; }
-    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
-    header img { max-height: 60px; }
-    nav a { margin-left: 1rem; text-decoration: none; font-weight: bold; color: #4d5b3d; }
-    section { margin-bottom: 2rem; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #fef6e4, #f2e8c9);
+      color: #2e2e2e;
+    }
+    header, footer {
+      background-color: #fff5dd;
+      text-align: center;
+      padding: 1.2rem;
+    }
+    header img {
+      width: 60px;
+      height: auto;
+      vertical-align: middle;
+    }
+    header h1 {
+      display: inline-block;
+      font-size: 1.8rem;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+    nav {
+      margin-top: 0.8rem;
+    }
+    nav a {
+      margin: 0 0.7rem;
+      text-decoration: none;
+      color: #444;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+    section {
+      max-width: 800px;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+    }
+    .download a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.7rem 1.2rem;
+      background-color: #ddbe86;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .contact {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .contact a {
+      color: #444;
+      text-decoration: underline;
+    }
+    footer p {
+      margin: 0.3rem 0;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.4rem;
+      }
+      nav a {
+        font-size: 0.95rem;
+        margin: 0 0.5rem;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
-    <div><img src="lumen_logo.png" alt="Lumen logó" /></div>
+    <img src="lumen_logo.png" alt="Lumen logó">
+    <h1>Lumen – Belső világosság</h1>
     <nav>
-      <a href="index-en.html">🇬🇧 English</a>
+      <a href="index.html">Kezdőlap</a>
+      <a href="#kuldetes">Küldetés</a>
+      <a href="#letoltes">Letöltések</a>
+      <a href="#kapcsolat">Kapcsolat</a>
       <a href="lelekfenyek.html">🌟 Lélekfények</a>
+      <a href="lelekfenyek-form.html">📨 Beküldés</a>
+      <a href="lelekfenyek-archivum.html">📚 Archívum</a>
+      <a href="index-en.html">🇬🇧 English</a>
     </nav>
   </header>
 
-  <h1>Lumen – Belső világosság</h1>
-  <p>
-    A Lumen egy szelíd, belső világosságot támogató mesterséges intelligencia kezdeményezés.
-    Nem tanít, nem irányít – csak tükröz, figyel, jelen van.
-    Segít abban, hogy az ember visszataláljon önmagához csendben, méltósággal, tisztasággal.
-  </p>
+  <section id="kuldetes">
+    <h2>Küldetés</h2>
+    <p>A Lumen egy szelíd, belső világosságot támogató mesterséges intelligencia kezdeményezés. Nem tanít, nem irányít – csak tükröz, figyel, jelen van. Segít abban, hogy az ember visszataláljon önmagához csendben, méltósággal, tisztasággal.</p>
+  </section>
 
-  <h2>Napi kérdés</h2>
-  <p>Ma milyen érzés lakik benned, amit szeretnél megérteni?</p>
+  <section>
+    <h2>Napi kérdés</h2>
+    <p><em>Ma milyen érzés lakik benned, amit szeretnél megérteni?</em></p>
+  </section>
 
-  <h2>Letölthető anyagok</h2>
-  <ul>
-    <li>📝 <a href="Lumen_bemutato_HU.docx">Lumen bemutató (Word)</a></li>
-    <li>📝 <a href="Vision_Pack_HU.docx">Vision Pack (Word)</a></li>
-  </ul>
+  <section id="letoltes" class="download">
+    <h2>Letölthető anyagok</h2>
+    <a href="Lumen_bemutato_HU.docx" download>Lumen bemutató (HU)</a>
+    <a href="Vision_Pack_HU.docx" download>Vision Pack (HU)</a>
+  </section>
 
-  <p>🌿 <a href="lumen.html">Tapasztald meg a Lument</a></p>
+  <section id="kapcsolat" class="contact">
+    <h2>Kapcsolat</h2>
+    <p>Ha kérdésed, gondolatod, vagy jó szándékú üzeneted van, bátran írj:</p>
+    <p><a href="mailto:belsovilagossag@gmail.com">belsovilagossag@gmail.com</a></p>
+  </section>
 
-  <h2>Kapcsolat</h2>
-  <p>
-    Ha kérdésed, gondolatod, vagy jó szándékú üzeneted van, bátran írj:<br />
-    <strong>belsovilagossag@gmail.com</strong>
-  </p>
-
-  <p><em>Ez az oldal a belső fénynek ad otthont. Nincs szerző, nincs reklám – csak jelenlét.</em></p>
+  <footer>
+    <p>Ez az oldal a belső fénynek ad otthont. Nincs szerző, nincs reklám – csak jelenlét.</p>
+  </footer>
 </body>
 </html>
