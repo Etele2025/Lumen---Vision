@@ -1,1 +1,72 @@
-<!DOCTYPE html><html><body><h1>lelekfenyek-form.html</h1></body></html>
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lélekfények – Történet beküldése</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fdf6ed;
+      color: #2e2e2e;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: #fff8e6;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.05);
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 1rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      resize: vertical;
+    }
+    button {
+      background-color: #ddb26f;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .nav {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .nav a {
+      text-decoration: none;
+      color: #444;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>📝 Történet beküldése</h1>
+  <form onsubmit="alert('Köszönjük, hogy megosztottad történeted!'); return false;">
+    <label for="story">Írd le, ami benned megszületett:</label>
+    <textarea id="story" name="story" placeholder="Pl.: Egy nehéz időszakban hogyan találtál vissza a reményhez..."></textarea>
+    <button type="submit">Beküldés</button>
+  </form>
+  <div class="nav">
+    <p><a href="lelekfenyek.html">⬅️ Vissza a Lélekfényekhez</a></p>
+  </div>
+</body>
+</html>
